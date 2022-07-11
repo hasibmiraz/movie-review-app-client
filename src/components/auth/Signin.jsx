@@ -3,6 +3,7 @@ import Container from '../Container';
 import FormInput from '../form/FormInput';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
+import CustomLink from '../CustomLink';
 
 const Signin = () => {
   return (
@@ -24,12 +25,8 @@ const Signin = () => {
           />
           <Submit value="Sign In" />
           <div className="flex justify-between text-dark-subtle">
-            <a className="hover:text-white duration-200" href="!@">
-              Forgot password?
-            </a>
-            <a className="hover:text-white duration-200" href="!@">
-              Sign up
-            </a>
+            <CustomLink to="/auth/forget-password">Forgot password?</CustomLink>
+            <CustomLink to="/auth/signup">Sign up</CustomLink>
           </div>
         </form>
       </Container>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '../Container';
+import CustomLink from '../CustomLink';
 import FormInput from '../form/FormInput';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
@@ -25,12 +26,8 @@ const Signin = () => {
           />
           <Submit value="Sign Up" />
           <div className="flex justify-between text-dark-subtle">
-            <a className="hover:text-white duration-200" href="!@">
-              Forgot password?
-            </a>
-            <a className="hover:text-white duration-200" href="!@">
-              Sign in
-            </a>
+            <CustomLink to="/auth/forget-password">Forgot password?</CustomLink>
+            <CustomLink to="/auth/signin">Sign in</CustomLink>
           </div>
         </form>
       </Container>
