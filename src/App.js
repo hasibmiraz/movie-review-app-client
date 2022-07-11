@@ -1,12 +1,12 @@
 import './App.css';
-import Signin from './components/auth/Signin';
+import Signup from './components/auth/Signup';
 import Navbar from './components/user/Navbar';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Signin />
+      <Signup />
     </>
   );
 }

@@ -9,7 +9,8 @@ const Signin = () => {
     <div className="fixed inset-0 -z-10 bg-primary flex justify-center items-center">
       <Container>
         <form className="bg-secondary rounded p-6 w-96 space-y-6">
-          <Title>Sign in</Title>
+          <Title>Sign up</Title>
+          <FormInput name="name" type="name" placeholder="Name" label="Name" />
           <FormInput
             name="email"
             type="email"
@@ -22,13 +23,13 @@ const Signin = () => {
             placeholder="********"
             label="Password"
           />
-          <Submit value="Sign In" />
+          <Submit value="Sign Up" />
           <div className="flex justify-between text-dark-subtle">
             <a className="hover:text-white duration-200" href="!@">
               Forgot password?
             </a>
             <a className="hover:text-white duration-200" href="!@">
-              Sign up
+              Sign in
             </a>
           </div>
         </form>
