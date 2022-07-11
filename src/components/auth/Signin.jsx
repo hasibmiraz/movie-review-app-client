@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../Container';
 import FormInput from '../form/FormInput';
+import Submit from '../form/Submit';
 import Title from '../form/Title';
 
 const Signin = () => {
@@ -21,6 +22,15 @@ const Signin = () => {
             placeholder="********"
             label="Password"
           />
+          <Submit value="Sign In" />
+          <div className="flex justify-between text-dark-subtle">
+            <a className="hover:text-white duration-200" href="!@">
+              Forgot password?
+            </a>
+            <a className="hover:text-white duration-200" href="!@">
+              Sign up
+            </a>
+          </div>
         </form>
       </Container>
     </div>
