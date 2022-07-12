@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdOutlineLightMode } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import Container from '../Container';
 
 const Navbar = () => {
@@ -7,7 +8,9 @@ const Navbar = () => {
     <div className="bg-secondary shadow-sm shadow-gray-500">
       <Container className="p-2">
         <div className="flex justify-between items-center">
-          <img src="logo.png" alt="" className="h-10" />
+          <Link to="/">
+            <img src="logo.png" alt="" className="h-10" />
+          </Link>
           <ul className="flex items-center space-x-3">
             <li>
               <button className="bg-dark-subtle p-1 rounded">
@@ -21,7 +24,9 @@ const Navbar = () => {
                 placeholder="Search..."
               />
             </li>
-            <li className="text-white font-semibold text-lg">Login</li>
+            <Link to="/auth/signin">
+              <li className="text-white font-semibold text-lg">Login</li>
+            </Link>
           </ul>
         </div>
       </Container>
