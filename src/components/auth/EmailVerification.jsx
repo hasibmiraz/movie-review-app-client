@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { commonModalClasses } from '../../utilities/theme';
 import Container from '../Container';
+import FormContainer from '../form/FormContainer';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
 
@@ -40,9 +42,9 @@ const EmailVerification = () => {
   }, [activeOtpIndex]);
 
   return (
-    <div className="fixed inset-0 -z-10 bg-primary flex justify-center items-center">
+    <FormContainer>
       <Container>
-        <form className="bg-secondary rounded p-6 space-y-6">
+        <form className={commonModalClasses}>
           <div>
             <Title>Please enter the OTP to verify your account</Title>
             <p className="text-center text-dark-subtle">
@@ -65,7 +67,7 @@ const EmailVerification = () => {
           <Submit value="Verify Account" />
         </form>
       </Container>
-    </div>
+    </FormContainer>
   );
 };
 

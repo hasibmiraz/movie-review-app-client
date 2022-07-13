@@ -1,15 +1,17 @@
 import React from 'react';
+import { commonModalClasses } from '../../utilities/theme';
 import Container from '../Container';
 import CustomLink from '../CustomLink';
+import FormContainer from '../form/FormContainer';
 import FormInput from '../form/FormInput';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
 
 const Signin = () => {
   return (
-    <div className="fixed inset-0 -z-10 dark:bg-primary flex justify-center items-center">
+    <FormContainer>
       <Container>
-        <form className="dark:bg-secondary rounded p-6 w-96 space-y-6 shadow-lg">
+        <form className={commonModalClasses}>
           <Title>Sign up</Title>
           <FormInput name="name" type="name" placeholder="Name" label="Name" />
           <FormInput
@@ -31,7 +33,7 @@ const Signin = () => {
           </div>
         </form>
       </Container>
-    </div>
+    </FormContainer>
   );
 };
 
