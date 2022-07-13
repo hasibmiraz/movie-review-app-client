@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { commonModalClasses } from '../../utilities/theme';
 import Container from '../Container';
 import CustomLink from '../CustomLink';
@@ -7,22 +7,67 @@ import FormInput from '../form/FormInput';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
 
-const Signin = () => {
+const validateUserInfo = ({ name, email, password }) => {
+  const isValidEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const isValidName = /^[a-z A-Z]/;
+
+  if (!name.trim()) return { ok: false, error: 'Name is missing' };
+  if (!isValidName.test(name)) return { ok: false, error: 'Invalid name' };
+
+  if (!email.trim()) return { ok: false, error: 'Email is missing' };
+  if (!isValidEmail.test(email)) return { ok: false, error: 'Invalid email' };
+
+  if (!password.trim()) return { ok: false, error: 'Password is missing' };
+  if (password.length < 8)
+    return { ok: false, error: 'Password must be atleast 8 characters' };
+};
+
+const Signup = () => {
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = ({ target }) => {
+    const { value, name } = target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { ok, error } = validateUserInfo(userInfo);
+    if (!ok) return console.log(error);
+  };
+
+  const { name, email, password } = userInfo;
+
   return (
     <FormContainer>
       <Container>
-        <form className={commonModalClasses}>
+        <form onSubmit={handleSubmit} className={commonModalClasses}>
           <Title>Sign up</Title>
-          <FormInput name="name" type="name" placeholder="Name" label="Name" />
+          <FormInput
+            name="name"
+            type="name"
+            onChange={handleChange}
+            value={name}
+            placeholder="Name"
+            label="Name"
+          />
           <FormInput
             name="email"
             type="email"
+            onChange={handleChange}
+            value={email}
             placeholder="hasib@email.com"
             label="Email"
           />
           <FormInput
             name="password"
             type="password"
+            onChange={handleChange}
+            value={password}
             placeholder="********"
             label="Password"
           />
@@ -37,4 +82,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
