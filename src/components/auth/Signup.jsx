@@ -7,9 +7,9 @@ import Title from '../form/Title';
 
 const Signin = () => {
   return (
-    <div className="fixed inset-0 -z-10 bg-primary flex justify-center items-center">
+    <div className="fixed inset-0 -z-10 dark:bg-primary flex justify-center items-center">
       <Container>
-        <form className="bg-secondary rounded p-6 w-96 space-y-6">
+        <form className="dark:bg-secondary rounded p-6 w-96 space-y-6 shadow-lg">
           <Title>Sign up</Title>
           <FormInput name="name" type="name" placeholder="Name" label="Name" />
           <FormInput

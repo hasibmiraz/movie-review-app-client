@@ -7,9 +7,9 @@ import CustomLink from '../CustomLink';
 
 const Signin = () => {
   return (
-    <div className="fixed inset-0 -z-10 dark:bg-primary flex justify-center items-center">
+    <div className="fixed inset-0 -z-10 flex justify-center items-center bg-white dark:bg-primary">
       <Container>
-        <form className="bg-secondary rounded p-6 w-96 space-y-6">
+        <form className="dark:bg-secondary rounded p-6 w-96 space-y-6 shadow-lg">
           <Title>Sign in</Title>
           <FormInput
             name="email"
@@ -24,7 +24,7 @@ const Signin = () => {
             label="Password"
           />
           <Submit value="Sign In" />
-          <div className="flex justify-between text-dark-subtle">
+          <div className="flex justify-between">
             <CustomLink to="/auth/forget-password">Forgot password?</CustomLink>
             <CustomLink to="/auth/signup">Sign up</CustomLink>
           </div>
