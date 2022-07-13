@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { commonModalClasses } from '../../utilities/theme';
 import Container from '../Container';
 import FormContainer from '../form/FormContainer';
 import Submit from '../form/Submit';
@@ -44,10 +43,10 @@ const EmailVerification = () => {
   return (
     <FormContainer>
       <Container>
-        <form className={commonModalClasses}>
+        <form className="dark:bg-secondary bg-white rounded p-6 space-y-6 shadow-lg">
           <div>
             <Title>Please enter the OTP to verify your account</Title>
-            <p className="text-center text-dark-subtle">
+            <p className="text-center dark:text-dark-subtle text-light-subtle">
               OTP has been sent to your email
             </p>
           </div>
@@ -60,7 +59,7 @@ const EmailVerification = () => {
                 value={otp[index] || ''}
                 onChange={(e) => handleOtpChange(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
-                className="w-12 h-12 border-2 border-dark-subtle bg-transparent rounded text-white text-center focus:border-white outline-none text-lg font-semibold otpNumber"
+                className="w-12 h-12 border-2 dark:border-dark-subtle border-light-subtle bg-transparent rounded dark:text-white text-primary text-center dark:focus:border-white focus:border-primary outline-none text-lg font-semibold otpNumber"
               />
             ))}
           </div>

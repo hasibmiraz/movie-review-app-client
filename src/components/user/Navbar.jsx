@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdOutlineLightMode } from 'react-icons/md';
+import { BsFillMoonFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../hooks';
 import Container from '../Container';
@@ -20,7 +21,14 @@ const Navbar = () => {
                 onClick={toggleTheme}
                 className="bg-dark-subtle p-1 rounded"
               >
-                <MdOutlineLightMode className="text-white" size={24} />
+                <MdOutlineLightMode
+                  className="dark:flex hidden text-white"
+                  size={24}
+                />
+                <BsFillMoonFill
+                  className="dark:hidden flex text-white"
+                  size={24}
+                />
               </button>
             </li>
             <li>
