@@ -31,7 +31,7 @@ const EmailVerification = () => {
 
   const handleKeyDown = ({ key }, index) => {
     if (key === 'Backspace') {
-      focusPrevInputField(index);
+      focusPrevInputField(index + 1);
     }
   };
 

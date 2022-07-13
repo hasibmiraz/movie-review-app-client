@@ -1,9 +1,12 @@
 import React from 'react';
 import { MdOutlineLightMode } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../hooks';
 import Container from '../Container';
 
 const Navbar = () => {
+  const toggleTheme = useTheme();
+
   return (
     <div className="bg-secondary shadow-sm shadow-gray-500">
       <Container className="p-2">
@@ -13,7 +16,10 @@ const Navbar = () => {
           </Link>
           <ul className="flex items-center space-x-3">
             <li>
-              <button className="bg-dark-subtle p-1 rounded">
+              <button
+                onClick={toggleTheme}
+                className="bg-dark-subtle p-1 rounded"
+              >
                 <MdOutlineLightMode className="text-white" size={24} />
               </button>
             </li>
