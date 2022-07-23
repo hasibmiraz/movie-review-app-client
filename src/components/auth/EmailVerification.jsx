@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Container from '../Container';
 import FormContainer from '../form/FormContainer';
 import Submit from '../form/Submit';
@@ -9,6 +10,11 @@ const EmailVerification = () => {
   const [otp, setOtp] = useState(new Array(otpLength).fill(''));
   const [activeOtpIndex, setActiveOtpIndex] = useState(0);
   const inputRef = useRef();
+
+  const { state } = useLocation();
+  const user = state?.user;
+
+  const navigate = useNavigate();
 
   const focusNextInputField = (index) => {
     setActiveOtpIndex(index + 1);
@@ -39,6 +45,12 @@ const EmailVerification = () => {
   useEffect(() => {
     inputRef.current?.focus();
   }, [activeOtpIndex]);
+
+  useEffect(() => {
+    if (!user) navigate('/not-found');
+  }, [user, navigate]);
+
+  if (!user) return null;
 
   return (
     <FormContainer>

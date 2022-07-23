@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../api/auth';
 import { commonModalClasses } from '../../utilities/theme';
 import Container from '../Container';
@@ -21,7 +22,7 @@ const validateUserInfo = ({ name, email, password }) => {
   if (!password.trim()) return { ok: false, error: 'Password is missing' };
   if (password.length < 8)
     return { ok: false, error: 'Password must be atleast 8 characters' };
-  if (name && email && password) return { ok: true, error: 'No error!' };
+  return { ok: true };
 };
 
 const Signup = () => {
@@ -30,6 +31,8 @@ const Signup = () => {
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
@@ -42,7 +45,10 @@ const Signup = () => {
     if (!ok) return console.log(error);
     const response = await createUser(userInfo);
     if (response.error) return console.log(response.error);
-    console.log(response.user);
+    navigate('/auth/verification', {
+      state: { user: response.user },
+      replace: true,
+    });
   };
 
   const { name, email, password } = userInfo;
