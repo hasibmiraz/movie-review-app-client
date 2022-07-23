@@ -1,9 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { verifyUserEmail } from '../../api/auth';
 import Container from '../Container';
 import FormContainer from '../form/FormContainer';
 import Submit from '../form/Submit';
 import Title from '../form/Title';
+
+const isValidOTP = (otp) => {
+  let valid = false;
+  for (let val of otp) {
+    valid = !isNaN(parseInt(val));
+    if (!valid) break;
+  }
+  return valid;
+};
 
 const EmailVerification = () => {
   const otpLength = 6;
@@ -42,20 +52,35 @@ const EmailVerification = () => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isValidOTP(otp)) return console.log('Invalid OTP');
+    const { error, message } = await verifyUserEmail({
+      OTP: otp.join(''),
+      userId: user.id,
+    });
+    if (error) return console.log(error);
+    console.log(message);
+  };
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [activeOtpIndex]);
 
   useEffect(() => {
     if (!user) navigate('/not-found');
-  }, [user, navigate]);
+  }, [user]);
 
   if (!user) return null;
 
   return (
     <FormContainer>
       <Container>
-        <form className="dark:bg-secondary bg-white rounded p-6 space-y-6 shadow-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="dark:bg-secondary bg-white rounded p-6 space-y-6 shadow-lg"
+        >
           <div>
             <Title>Please enter the OTP to verify your account</Title>
             <p className="text-center dark:text-dark-subtle text-light-subtle">

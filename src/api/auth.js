@@ -10,3 +10,14 @@ export const createUser = async (userInfo) => {
     return { err: err.message || err };
   }
 };
+
+export const verifyUserEmail = async (userInfo) => {
+  try {
+    const { data } = await client.post('/user/verify-email', userInfo);
+    return data;
+  } catch (err) {
+    const { response } = err;
+    if (response?.data) return response.data;
+    return { err: err.message || err };
+  }
+};
